@@ -1,41 +1,31 @@
 import csv
 
-def alterar_retorno_por_vaga(nome_vaga, novo_retorno):
-    # Nome do arquivo CSV
-    name_file = 'informacoes_vagas.csv'
 
-    # Lista para armazenar linhas atualizadas
-    linhas_atualizadas = []
+def update_return_by_job(job_name, new_return_value):
+    file_name = "job_information.csv"
 
-    # Abre o arquivo CSV em modo de leitura e escrita
-    with open(name_file, mode='r', newline='') as arquivo_csv:
-        # Cria um objeto leitor CSV
-        leitor_csv = csv.reader(arquivo_csv)
+    updated_lines = []
 
-        # Lê e armazena as linhas do arquivo CSV
-        linhas = list(leitor_csv)
+    with open(file_name, mode="r", newline="") as csv_file:
+        csv_reader = csv.reader(csv_file)
 
-        # Percorre as linhas e procura pela vaga desejada
-        for linha in linhas:
-            if nome_vaga.lower() in linha[1].lower():
-                # Atualiza o valor da coluna "retorno"
-                linha[3] = novo_retorno
+        lines = list(csv_reader)
 
-            # Adiciona a linha à lista de linhas atualizadas
-            linhas_atualizadas.append(linha)
+        for line in lines:
+            if job_name.lower() in line[1].lower():
+                line[3] = new_return_value
 
-    # Abre o arquivo CSV em modo de escrita
-    with open(name_file, mode='w', newline='') as arquivo_csv:
-        # Cria um objeto escritor CSV
-        escritor_csv = csv.writer(arquivo_csv)
+            updated_lines.append(line)
 
-        # Escreve as linhas atualizadas no arquivo
-        escritor_csv.writerows(linhas_atualizadas)
+    with open(file_name, mode="w", newline="") as csv_file:
+        csv_writer = csv.writer(csv_file)
 
-# Exemplo de uso da função
-nome_vaga_input = input("Digite o nome da vaga para alterar o retorno: ")
-novo_retorno_input = input("Digite o novo valor para a coluna retorno: ")
+        csv_writer.writerows(updated_lines)
 
-alterar_retorno_por_vaga(nome_vaga_input, novo_retorno_input)
 
-print("Valor da coluna 'retorno' atualizado com sucesso.")
+job_name_input = input("Digite o nome da vaga para alterar o retorno: ")
+new_return_value_input = input("Digite o novo valor para a coluna retorno: ")
+
+update_return_by_job(job_name_input, new_return_value_input)
+
+print("Valor da coluna 'retorno' atualizado com sucesso..")
