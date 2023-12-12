@@ -3,7 +3,7 @@ import csv
 file_name = "job_information.csv"
 
 while True:
-    day = input("Enter the day you applied for this job (or 'stop' to end): ")
+    day = input("Adicione o dia que você se candidatou a essa vaga ou digite stop para encerrar: ")
 
     if day.lower() == "stop":
         break
