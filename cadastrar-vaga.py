@@ -1,6 +1,6 @@
 import csv
 
-file_name = "job_information.csv"
+file_name = "informacoes_vagas.csv"
 
 while True:
     day = input("Adicione o dia que você se candidatou a essa vaga ou digite stop para encerrar: ")
